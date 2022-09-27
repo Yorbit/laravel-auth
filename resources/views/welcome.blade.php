@@ -7,16 +7,16 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
+                height: 100vh;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
-                height: 100vh;
                 margin: 0;
             }
 
@@ -36,8 +36,8 @@
 
             .top-right {
                 position: absolute;
-                right: 10px;
-                top: 18px;
+                right: 30px;
+                top: 20px;
             }
 
             .content {
@@ -45,21 +45,17 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 72px;
+                font-weight: 600;
             }
 
             .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
+                color: #4040ff;
+                padding: 10px 25px;
+                font-size: 18px;
                 font-weight: 600;
-                letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
             }
         </style>
     </head>
@@ -68,12 +64,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ route('admin.home') }}">Home</a>
+                        <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Registrati</a>
                         @endif
                     @endauth
                 </div>
@@ -81,9 +77,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    WIP
+                    Laravel DB
                 </div>
-                COMING SOON
             </div>
         </div>
     </body>
