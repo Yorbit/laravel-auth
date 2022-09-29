@@ -15,6 +15,12 @@
     <input type="text" name="post_image_url" value="{{ old('post_image_url', $post->post_image_url) }}" class="mb-5 h3">
     @include("includes.error", [$inputName = "post_image_url"])
 
+    <select name="category" id="category" class="mb-5">
+        @foreach ($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+    </select>
+    
     <button type="submit" class="align-self-center btn btn-primary">{{ $submitMessage }}</button>
 
 </form>

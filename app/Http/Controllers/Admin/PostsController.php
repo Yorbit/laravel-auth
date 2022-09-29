@@ -7,6 +7,7 @@ use App\Models\Admin\Post;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Admin\Category;
 
 class PostsController extends Controller
 {
@@ -15,6 +16,7 @@ class PostsController extends Controller
         "title" => "required|min:3|max:150",
         "content" => "required|min:5|max:255",
         "post_image_url" => "active_url",
+        "category" => "required|exists:categories,id"
     ];
 
     public function __construct()
@@ -28,7 +30,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::where("user_id", Auth::user()->id)->get();
         return view("admin.index", compact("posts"));
     }
 
@@ -40,7 +42,8 @@ class PostsController extends Controller
     public function create()
     {
         $post = new Post();
-        return view("admin.create", compact("post"));
+        $categories = Category::all();
+        return view("admin.create", compact("post"), compact("categories"));
     }
 
     /**
@@ -54,11 +57,12 @@ class PostsController extends Controller
         $postData = $request->validate($this->validationRules);
 
         $post = new Post();
-        $post->user = Auth::user()->name;
+        $post->user = Auth::user()->id;
         $post->title = $postData["title"];
         $post->content = $postData["content"];
         $post->post_image_url = $postData["post_image_url"];
         $post->date = date("Y/m/d H:i:s");
+        $post->category_id = $postData["category"];
         $post->save();
 
         return redirect()->route("admin.show", $post->id)->with("created", $post->id);
@@ -86,7 +90,8 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view("admin.edit", compact("post"));
+        $categories = Category::all();
+        return view("admin.edit", compact("post"), compact("categories"));
     }
 
     /**
@@ -105,7 +110,7 @@ class PostsController extends Controller
         $post->title = $postData["title"];
         $post->content = $postData["content"];
         $post->post_image_url = $postData["post_image_url"];
-
+        $post->category_id = $postData["category"];
         $post->save();
 
         return redirect()->route("admin.show", $post->id)->with("updated", $post->id);

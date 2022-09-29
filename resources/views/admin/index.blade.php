@@ -12,8 +12,9 @@
                 <table class="table table-dark table-striped">
                     <thead>
                         <td>ID</td>
-                        <td>Username</td>
                         <td>Title</td>
+                        <td>Username</td>
+                        <td>Category</td>
                         <td>Date</td>
                         <td></td>
                     </thead>
@@ -22,8 +23,9 @@
                             <tr>
                                 <td>{{ $post->id }}</td>
                                 <td><a href="{{ route('admin.show', $post->id) }}">{{ $post->title }}</a></td>
-                                <td>{{ $post->user }}</td>
+                                <td>{{ $post->user->name }}</td>
                                 <td>{{ $post->date }}</td>
+                                <td>{{ $post->category->name }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('admin.edit', $post->id) }}" class="btn btn-sm btn-success">Modifica</a>
                                     <form action="{{ route('admin.destroy', $post->id) }}" method="POST" class="delete-element-button">
