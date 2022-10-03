@@ -42,7 +42,7 @@
             @endif
             <label class="form-check-label" for="tag-input">{{ $tag->name }}</label>
         @empty
-            <p>No tags available.</p>
+            <p>NESSUN TAG DISPONIBILE</p>
         @endforelse
                     
     </div>
