@@ -22,5 +22,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource("/admin", "Admin\PostsController");
 
+Route::patch("/admin/{id}/patch", "Admin\PostsController@removeFromCategory")->name("admin.clear");
+
+Route::resource("/categories", "Admin\CategoriesController");
+
+Route::resource("/tags", "Admin\TagsController");
+
+
 
 

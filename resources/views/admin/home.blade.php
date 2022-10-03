@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('Accesso Admin') }}
+                    {{ __('Accesso Come Admin') }}
                 </div>
             </div>
         </div>

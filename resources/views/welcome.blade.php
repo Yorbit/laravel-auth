@@ -3,13 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
+        <title>My Laravel</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
@@ -66,7 +61,7 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Accedi</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Registrati</a>
@@ -77,7 +72,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel DB
+                    My Laravel DB
                 </div>
             </div>
         </div>

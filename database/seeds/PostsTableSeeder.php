@@ -26,7 +26,7 @@ class PostsTableSeeder extends Seeder
             $newPost->title = $faker->words(4, true);
             $newPost->content = $faker->paragraphs(2, true);
             $newPost->date = $faker->dateTime();
-            $newPost->post_image_url = $faker->imageUrl();
+            $newPost->post_image = $faker->imageUrl();
             $newPost->save();
         }
     }
